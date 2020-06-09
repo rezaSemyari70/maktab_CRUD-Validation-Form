@@ -13,7 +13,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+
     <!-- Main css -->
     <link rel="stylesheet" href="main.css">
 </head>
@@ -21,6 +21,11 @@
 <body>
 
     <div class="container">
+        
+        <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">Add Contact</button>
+        <button type="button" class="btn btn-secondary my-3" >Close Form</button>
+
         <div class="row ">
             <table class="table table-hover">
                 <thead class="">
@@ -34,6 +39,59 @@
                 </thead>
             </table>
         </div>
+    </div>
+
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content border-0">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Form Contact</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">ID:</label>
+                            <input type="number" class="form-control" id="recipient-name" placeholder="Id">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="recipient-name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Password:</label>
+                            <input type="password" class="form-control" id="recipient-name" placeholder="password"> 
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Confirm:</label>
+                            <input type="password" class="form-control" id="recipient-name" placeholder="repeat the password"> 
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Email:</label>
+                            <input type="email" class="form-control" id="recipient-name" placeholder="email address">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Phone:</label>
+                            <input type="number" class="form-control" id="recipient-name" placeholder="phone number">
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <div class="row ">
+                                <button type="button" class="btn btn-success">Save</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
     </div>
 
     <!-- Optional JavaScript -->
