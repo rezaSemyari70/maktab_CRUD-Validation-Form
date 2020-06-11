@@ -27,7 +27,7 @@
         <button type="button" class="btn btn-secondary my-3" >Close Form</button>
 
         <div class="row ">
-            <table class="table table-hover">
+            <table id="content-table" class="table table-hover">
                 <thead class="">
                     <tr class="">
                         <th scope="col">ID</th>
@@ -55,35 +55,35 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="">
+                    <form id="contact-form" class="" >
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">ID:</label>
-                            <input type="number" class="form-control" id="recipient-name" placeholder="Id">
+                            <input type="number" class="form-control" name="id" id="id" placeholder="Id">
                         </div>
-                        <div class="form-group">
+                        <div id="formName" class="form-group">
                             <label for="recipient-name" class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="recipient-name" placeholder="Name">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Name">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Password:</label>
-                            <input type="password" class="form-control" id="recipient-name" placeholder="password"> 
+                            <input type="password" class="form-control" name="password" id="password" placeholder ="password"> 
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Confirm:</label>
-                            <input type="password" class="form-control" id="recipient-name" placeholder="repeat the password"> 
+                            <input type="password" class="form-control" name="confirm" id="comfirm" placeholder="repeat the password"> 
                         </div>
-                        <div class="form-group">
+                        <div id="formEmail" class="form-group">
                             <label for="recipient-name" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="recipient-name" placeholder="email address">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="email address">
                         </div>
-                        <div class="form-group">
+                        <div id="formPhone" class="form-group">
                             <label for="recipient-name" class="col-form-label">Phone:</label>
-                            <input type="number" class="form-control" id="recipient-name" placeholder="phone number">
+                            <input type="number" class="form-control" name="phone" id="phone" placeholder="phone number">
                         </div>
                         <div class="modal-footer justify-content-center">
                             <div class="row ">
-                                <button type="button" class="btn btn-success">Save</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Reset</button>
+                                <button id="saveData" type="submit" class="btn btn-success">Save</button>
+                                <button id="resetData" type="reset" class="btn btn-secondary" >Reset</button>
                             </div>
                         </div>
                     </form>
@@ -93,6 +93,9 @@
         </div>
     </div>
     </div>
+
+    <!-- CDN jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -105,6 +108,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+
+    <script src="jQuery-app.js"></script>
 </body>
 
 </html>

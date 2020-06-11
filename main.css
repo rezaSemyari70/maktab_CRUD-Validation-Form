@@ -24,3 +24,13 @@
 .modal-content{
     background-color: rgba(255, 255, 255, 0.904) !important;
 }
+
+.error{
+    color: red;
+    font-size: 12px;
+}
+
+.pass{
+    color: green;
+    font-size: 12px;
+}
