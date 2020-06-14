@@ -3,65 +3,73 @@ $(document).ready(function () {
     // let name = $('#name').val();
     // let password = $('#password').val();
     // let confirm = $('#confirm').val();
-    let email = $('#email').val();
-    let phone = $('#phone').val();
-
+    // let email = $('#email').val();
+    // let phone = $('#phone').val();
 
     //---------Save Data-------------
 
     $('#saveData').click(function (e) {
         e.preventDefault();
-        console.log(email);
-        
-        // isAlphaNumeric(name);
-        // validatePassword(password);
-        // isConfirm(confirm);
-        isEmail(email);
-        // validPhone(phone);
+        $('span').remove();
+
+        isAlphaNumeric();
+        validatePassword();
+        isConfirm();
+        isEmail();
+        validPhone();
+
+        createContact();
+        $("#exampleModal").modal("hide");
+        $(":input").val("");
+
+
+
     });
 
     //***************  check alphanumeric username  ***************
 
-    function isAlphaNumeric(name) {
-        pattern = new RegExp(/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]$/);
-        if (pattern.test(name)) {
-            successMode(name);
+    function isAlphaNumeric() {
+        let name = $('#name').val();
+
+        let res = /^([a-z]{5,20})$/.test(name.trim())
+        // pattern = new RegExp(/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]$/);
+        if (res) {
+            successMode($('#name'));
         } else {
-            errorMode(name);
+            errorMode($('#name'));
         }
     }
 
 
     //***************  validation Password  ***************
 
-    function validatePassword(password) {
-        pattern = new RegExp(
-            /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/)
-        if (pattern.text(password)) {
-            successMode(password);
+    function validatePassword() {
+        let password = $('#password').val();
+        res = /^.{5,}$/.test(password.trim());
+        if (res) {
+            successMode($('#password'));
         } else {
-            errorMode(password);
+            errorMode($('#password'));
         }
     }
 
     //***************  Confirm Password  ***************
 
-    function isConfirm(confirm) {
-        if (confirm === password) {
-            successMode(confirm);
+    function isConfirm() {
+        let confirm = $('#confirm').val();
+        if (confirm === $('#password').val()) {
+            successMode($('#confirm'));
         } else {
-            errorMode(confirm);
+            errorMode($('#confirm'));
         }
     }
 
     //***************  validation email  ***************
 
-    function isEmail(email) {
-        pattern = new RegExp( /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
-        res = pattern.test();
+    function isEmail() {
+        let email = $('#email').val().trim();
 
-        return res;
-        
+        let res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.trim());
 
         if (res) {
             successMode($('#email'));
@@ -72,7 +80,10 @@ $(document).ready(function () {
 
     //**************  Validation Phone number  ***************
 
-    function validPhone(phone) {
+    function validPhone() {
+
+        let phone = $('#phone').val();
+
         let res = /^(\+98?)?{?(0?9[0-9]{9,}}?)$/.test(phone);
         if (res) {
             successMode($('#phone'));
@@ -84,20 +95,20 @@ $(document).ready(function () {
     //---------Show Error-------------
 
     function errorMode(input) {
-        console.log(input);
         resetData();
+        const formControl = $(input).parent();
+        formControl.children("span").remove();
         $(input).css({
             "border-color": "red",
             "background-color": "lightpink"
         });
-        const formControl = $(input).parent();
-        formControl.children("span").remove();
+
         if ($(input).val() == "") {
-            $('#formEmail').after(
+            $(input).after(
                 $(`<span class="error">this field is Empty!</span>`)
             );
         } else {
-            $('#formEmail').after(
+            formControl.after(
                 $(`<span class="error">data entered is not valid!</span>`)
             );
         }
@@ -106,14 +117,14 @@ $(document).ready(function () {
     //---------Show Success-------------
 
     function successMode(input) {
-        
         const formControl = $(input).parent();
+
         formControl.children("span").remove();
-        $('#email').css({
+        input.css({
             "border-color": "green",
             "background-color": "lightgreen"
         });
-        $('#formEmail').after(
+        $(input).parent().after(
             $(`<span class="pass">valid data</span>`)
         );
     }
@@ -129,5 +140,18 @@ $(document).ready(function () {
             })
         })
     }
+
+
+
+    // **************   Create Contact   **************
+
+
+    function createContact() {
+        let rowTable = $(":input").serializeArray();
+        $('#content-table').append(`
+            <tbody><tr><td>${rowTable[0].value}</td><td>${rowTable[1].value}</td><td>${rowTable[4].value}</td><td>${rowTable[5].value}</td><td><button class="bg-primary"><i class="fa fa-edit"></i></button> <button class="bg-danger"><i class="fa fa-trash"></i></button></td></tr></tbody>
+        `)
+    }
+
 
 })
